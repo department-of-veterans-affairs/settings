@@ -10,7 +10,7 @@ describe('Labels', () => {
   beforeEach(() => {
     github = {
       issues: {
-        getLabels: jest.fn().mockImplementation(() => Promise.resolve([])),
+        listLabelsForRepo: jest.fn().mockImplementation(() => Promise.resolve([])),
         createLabel: jest.fn().mockImplementation(() => Promise.resolve()),
         deleteLabel: jest.fn().mockImplementation(() => Promise.resolve()),
         updateLabel: jest.fn().mockImplementation(() => Promise.resolve())
