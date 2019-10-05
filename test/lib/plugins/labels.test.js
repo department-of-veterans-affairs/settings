@@ -54,7 +54,7 @@ describe('Labels', () => {
         expect(github.issues.updateLabel).toHaveBeenCalledWith({
           owner: 'bkeepers',
           repo: 'test',
-          oldname: 'update-me',
+          current_name: 'update-me',
           name: 'new-name',
           color: 'FFFFFF',
           description: '',
@@ -64,7 +64,7 @@ describe('Labels', () => {
         expect(github.issues.updateLabel).toHaveBeenCalledWith({
           owner: 'bkeepers',
           repo: 'test',
-          oldname: 'new-color',
+          current_name: 'new-color',
           name: 'new-color',
           color: '999999',
           description: '',
@@ -74,7 +74,7 @@ describe('Labels', () => {
         expect(github.issues.updateLabel).toHaveBeenCalledWith({
           owner: 'bkeepers',
           repo: 'test',
-          oldname: 'new-description',
+          current_name: 'new-description',
           name: 'new-description',
           color: '000000',
           description: 'Hello world',
