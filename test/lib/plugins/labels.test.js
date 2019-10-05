@@ -20,7 +20,7 @@ describe('Labels', () => {
 
   describe('sync', () => {
     it('syncs labels', () => {
-      github.issues.getLabels.mockReturnValueOnce(Promise.resolve({ data: [
+      github.issues.listLabelsForRepo.mockReturnValueOnce(Promise.resolve({ data: [
         { name: 'no-change', color: 'FF0000', description: '' },
         { name: 'new-color', color: 0, description: '' }, // YAML treats `color: 000000` as an integer
         { name: 'new-description', color: '000000', description: '' },
@@ -54,8 +54,8 @@ describe('Labels', () => {
         expect(github.issues.updateLabel).toHaveBeenCalledWith({
           owner: 'bkeepers',
           repo: 'test',
-          oldname: 'update-me',
-          name: 'new-name',
+          name: 'update-me',
+          new_name: 'new-name',
           color: 'FFFFFF',
           description: '',
           headers: { accept: 'application/vnd.github.symmetra-preview+json' }
@@ -64,8 +64,8 @@ describe('Labels', () => {
         expect(github.issues.updateLabel).toHaveBeenCalledWith({
           owner: 'bkeepers',
           repo: 'test',
-          oldname: 'new-color',
           name: 'new-color',
+          new_name: 'new-color',
           color: '999999',
           description: '',
           headers: { accept: 'application/vnd.github.symmetra-preview+json' }
@@ -74,8 +74,8 @@ describe('Labels', () => {
         expect(github.issues.updateLabel).toHaveBeenCalledWith({
           owner: 'bkeepers',
           repo: 'test',
-          oldname: 'new-description',
           name: 'new-description',
+          new_name: 'new-description',
           color: '000000',
           description: 'Hello world',
           headers: { accept: 'application/vnd.github.symmetra-preview+json' }
